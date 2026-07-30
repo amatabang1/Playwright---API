@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "playwright": "^1.61.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.0",
+    "@types/node": "^26.1.1",
+    "allure-playwright": "^3.10.2"
+  },
+  
+  "scripts": {"test:allure": "rimraf allure-results allure-report && playwright test && allure serve allure-results"}
+}

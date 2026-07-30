@@ -1,0 +1,4 @@
+Cleared contents of: C:\Users\ARM83471\Playwright - API Automation Framework\test-results
+Cleared contents of: C:\Users\ARM83471\Playwright - API Automation Framework\allure-results
+Cleared contents of: C:\Users\ARM83471\Playwright - API Automation Framework\allure-report
+================ GENERATE BEARER TOKEN ================

@@ -1,0 +1,9 @@
+{
+  "MS": "http://172.16.242.250:1001/",
+  "APIGW": "https://apigw-dev.eastwestbanker.com/54443/",
+  "MicroServBase": "http://172.16.242.250",
+  "TestBase": "https://proxy-apim-external-test.eastwestbanker.com/test",
+  "LiveBase": "https://proxy-apim-external-test.eastwestbanker.com/",
+  "Sandbox": "https://proxy-apim-external-test.eastwestbanker.com/sandbox",
+  "ipNotWhitelisted": "https://easyconnect-apiuat.eastwestbanker.com"
+}
