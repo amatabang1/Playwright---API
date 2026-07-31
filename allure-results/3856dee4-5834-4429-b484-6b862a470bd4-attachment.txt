@@ -1,0 +1,48 @@
+================ REQUEST ================
+Endpoint: https://proxy-apim-external-test.eastwestbanker.com/sandbox/send-funds/localft/v1/list/institutions?channel=Instapay
+Headers: {
+  "api-key": "GsG5c0UhuhXUPj4XlY8G1kcjKioiFrqI",
+  "partner-id": "1042346954",
+  "x-correlation-id": "application/x-www-form-urlencoded"
+}
+params: {
+  "channel": "undefined"
+}
+================ RESPONSE ================
+Expected Status: 200
+Received Status: 400
+Headers: {
+  "date": "Thu, 30 Jul 2026 10:20:03 GMT",
+  "content-type": "application/json",
+  "content-length": "374",
+  "connection": "keep-alive",
+  "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+  "server": "istio-envoy",
+  "expires": "0",
+  "x-content-type-options": "nosniff",
+  "x-xss-protection": "0",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "pragma": "no-cache",
+  "x-frame-options": "DENY",
+  "x-envoy-upstream-service-time": "23",
+  "x-log-id": "6a6b25532f32a07de673bbad",
+  "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+  "gw-traceid": "6e2ed705aceae25a",
+  "gw-spanid": "52510030",
+  "x-kong-upstream-latency": "26",
+  "x-kong-proxy-latency": "1",
+  "via": "kong/3.5.0",
+  "x-kong-request-id": "86b7bb668c2d0303fdcd8135a9c41a26"
+}
+Body: {
+  "status": "FAILED",
+  "authId": "auth-2dfb7cda-0a72-4d3a-b1b2-c057369733e9",
+  "errors": [
+    {
+      "errorCode": "INVALID_CHANNEL",
+      "errorDescription": "Invalid Channel. The Channel provided is invalid."
+    }
+  ],
+  "responseCode": "400",
+  "responseDescription": "Invalid Channel. The Channel provided is invalid."
+}

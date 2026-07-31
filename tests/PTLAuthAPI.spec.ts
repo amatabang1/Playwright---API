@@ -8,16 +8,14 @@ const apiTest = env.LiveBase;
 //Passed the worksheet related to the test to get the data set
 const testData: any[] = XLutil.getExcelData('PTLAuthAPI');
 
-test.beforeAll(async () => {
-  await util.clearTestResults();
-});
-
 test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regression', '@AuthAPI'] }, () => {
   for (const data of testData) {
     test(`${data.Description}`, async ({ request }, testInfo) => {
-
+      
+      //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
 
+      //Constructor for request headers
       const reqHeaders = {
         Accept: String(data.IN_HeadAccept).trim(),
         'client-id': String(data.IN_HeadClientID).trim(),
@@ -26,7 +24,7 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
         'partner-id': String(data.IN_HeadPartnerID).trim(),
         'Content-Type': String(data.IN_HeadContentType).trim(),
       };
-
+      //Constructor for request body
       const body = {
         accountNumber: String(data.IN_AccountNumber).trim(),
         scope: String(data.IN_Scope).trim(),
@@ -41,9 +39,7 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
         }
       );
 
-      const responseHeaders = response.headers();
-
-      //Use to check the response if it is a json response or http error
+      //Checker for response type
       let responseBody;
       try {
         responseBody = await response.json();
@@ -51,17 +47,21 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
         responseBody = await response.text();
       }
 
+      //Log API request and response
       util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, null, body);
-      util.logResponse(data.ExpectedStatus, response.status(), responseHeaders, responseBody);
+      util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody);
 
+      //Output values into data table
       data.OUT_RequestHeaders = JSON.stringify(reqHeaders, null, 2);
       data.OUT_RequestBody = JSON.stringify(body, null, 2);
-      data.OUT_ResponseHeaders = JSON.stringify(responseHeaders, null, 2);
+      data.OUT_ResponseHeaders = JSON.stringify(response.headers(), null, 2);
       data.OUT_ResponseBody = JSON.stringify(responseBody, null, 2);
 
-      expect(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
+      //Attaching first the generated runtime data table file before assertions
+      await XLutil.generateAndAttachExcelResults(data.TC_ID, data, testInfo);
 
-      await XLutil.generateAndAttachExcelResults('PTLAuthAPI', testData, testInfo);
+      //Validation of response code
+      expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
     });
   }
 });

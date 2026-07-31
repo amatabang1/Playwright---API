@@ -3,37 +3,32 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiTest = env.Sandbox;
+const apiEnvi = env.Sandbox;
 
-// Worksheet name
+// Get test data for specified sheet
 const testData: any[] = XLutil.getExcelData('SBSendFunds');
 
 let bearerToken: string;
 let tokenToUse: string;
 
-test.beforeAll(async () => {
-    await util.clearTestResults();
-});
+test.describe('Sandbox - SendFunds Test Suite', { tag: ['@Sandbox', '@Regression', '@SendFunds'] }, () => {
 
-test.describe('Sandbox - SendFunds Test Suite', {tag: ['@Sandbox', '@Regression', '@SendFunds']},() => {
-    
     for (const data of testData) {
 
         test(`${data.Description}`, async ({ request }, testInfo) => {
 
-            //Use for generating 1 bearer token to be used for all test runs
+            //Check for skip test - Execution Flag
             util.skipIfNotExecutable(data.ExecutionFlag);
 
+            //Generate bearer token
             const apiContext = await playwrightRequest.newContext();
-
-            bearerToken = await util.getBearerToken(apiContext, apiTest, data.IN_EndPointBearer, data.IN_HeadAccept, data.IN_HeadClientID, data.IN_HeadAPIKey,
+            bearerToken = await util.getBearerToken(apiContext, apiEnvi, data.IN_EndPointBearer, data.IN_HeadAccept, data.IN_HeadClientID, data.IN_HeadAPIKey,
                 data.IN_HeadClientSecret,
                 data.IN_HeadPartnerID,
                 data.IN_HeadContentType,
                 data.IN_SourceAccountNumber,
                 data.IN_Scope
             );
-
             await apiContext.dispose();
 
             if (data.IN_ExpiredToken === null || data.IN_ExpiredToken === undefined) {
@@ -43,6 +38,7 @@ test.describe('Sandbox - SendFunds Test Suite', {tag: ['@Sandbox', '@Regression'
             }
             console.log('Token to use:', tokenToUse);
 
+            //Constructor for request headers
             const reqHeaders = {
                 Authorization: String(tokenToUse).trim(),
                 'Content-Type': String(data.IN_HeadContentType).trim(),
@@ -51,7 +47,7 @@ test.describe('Sandbox - SendFunds Test Suite', {tag: ['@Sandbox', '@Regression'
                 'partner-id': String(data.IN_HeadPartnerID).trim(),
                 'x-correlation-id': String(data.IN_HeadCorrelationID).trim(),
             };
-
+            //Constructor for request body
             const body = {
                 channel: String(data.IN_Channel).trim(),
 
@@ -84,14 +80,14 @@ test.describe('Sandbox - SendFunds Test Suite', {tag: ['@Sandbox', '@Regression'
 
             //Trigger the api call for POST
             const response = await request.post(
-                `${apiTest}${data.IN_EndPoint}`,
+                `${apiEnvi}${data.IN_EndPoint}`,
                 {
                     headers: reqHeaders,
                     data: body,
                 }
             );
 
-            const responseHeaders = response.headers();
+            //Checker for response type
             let responseBody: any;
             try {
                 responseBody = await response.json();
@@ -99,23 +95,24 @@ test.describe('Sandbox - SendFunds Test Suite', {tag: ['@Sandbox', '@Regression'
                 responseBody = await response.text();
             }
 
-            util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, null, body);
-            util.logResponse(data.ExpectedStatus, response.status(), responseHeaders, responseBody)
+            //Log API request and response
+            util.logRequest(apiEnvi, data.IN_EndPoint, reqHeaders, null, body);
+            util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody)
             util.logTransaction(responseBody.apiTxnId, responseBody.apiTxnRef);
 
+            //Output values into data table
             data.OUT_TxnID = responseBody.apiTxnId;
             data.OUT_TxnRef = responseBody.apiTxnRef;
             data.OUT_RequestHeaders = JSON.stringify(reqHeaders, null, 2);
             data.OUT_RequestBody = JSON.stringify(body, null, 2);
-            data.OUT_ResponseHeaders = JSON.stringify(responseHeaders, null, 2);
+            data.OUT_ResponseHeaders = JSON.stringify(response.headers(), null, 2);
             data.OUT_ResponseBody = JSON.stringify(responseBody, null, 2);
 
-            //validation of response code
-            expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
+            //Attaching first the generated runtime data table file before assertions
+            await XLutil.generateAndAttachExcelResults(data.TC_ID, data, testInfo);
 
-            await XLutil.generateAndAttachExcelResults('SBSendFunds', testData, testInfo);
+            //Validation of response code
+            expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
         });
     }
-
 });
-

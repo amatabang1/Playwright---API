@@ -8,26 +8,25 @@ const apiTest = env.LiveBase;
 //Passed the worksheet related to the test to get the data set
 const testData: any[] = XLutil.getExcelData('PTLBankList');
 
-test.beforeAll(async () => {
-    await util.clearTestResults();
-});
-
-test.describe('Promote To Test - Bank List API Test Suite', {tag: ['@PTLive', '@Regression', '@BankList']},() => {
+test.describe('Promote To Live - Bank List API Test Suite', { tag: ['@PTLive', '@Regression', '@BankList'] }, () => {
   for (const data of testData) {
     test(`${data.Description}`, async ({ request }, testInfo) => {
 
+      //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
 
+      //Constructor for request headers
       const reqHeaders = {
         'api-key': String(data.IN_HeadAPIKey).trim(),
         'partner-id': String(data.IN_HeadPartnerID).trim(),
         'x-correlation-id': String(data.IN_HeadCorrelationID).trim()
       };
-
+      //Constructor for request params
       const params = {
         'channel': String(data.In_Channel).trim()
       };
 
+      //Trigger the api call for GET
       const response = await request.get(
         `${apiTest}${data.IN_EndPoint}`,
         {
@@ -36,9 +35,7 @@ test.describe('Promote To Test - Bank List API Test Suite', {tag: ['@PTLive', '@
         }
       );
 
-      const responseHeaders = response.headers();
-
-      //Use to check the response if it is a json response or http error
+      //Check for response type
       let responseBody;
       try {
         responseBody = await response.json();
@@ -46,17 +43,21 @@ test.describe('Promote To Test - Bank List API Test Suite', {tag: ['@PTLive', '@
         responseBody = await response.text();
       }
 
+      //Log API request and response
       util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, params, null);
-      util.logResponse(data.ExpectedStatus, response.status(), responseHeaders, responseBody);
+      util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody);
 
+      //Output values into data table
       data.OUT_RequestHeaders = JSON.stringify(reqHeaders, null, 2);
       data.OUT_RequestBody = JSON.stringify(responseBody, null, 2);
-      data.OUT_ResponseHeaders = JSON.stringify(responseHeaders, null, 2);
+      data.OUT_ResponseHeaders = JSON.stringify(response.headers(), null, 2);
       data.OUT_ResponseBody = JSON.stringify(responseBody, null, 2);
-      //validation of response code
-      expect(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
 
-      await XLutil.generateAndAttachExcelResults('PTLBankList', testData, testInfo);
+      //Attaching first the generated runtime data table file before assertions
+      await XLutil.generateAndAttachExcelResults(data.TC_ID, data, testInfo);
+
+      //Validation of response code
+      expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
     });
   }
 });

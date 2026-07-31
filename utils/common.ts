@@ -136,22 +136,6 @@ export function logTransaction(txnID: any, txnRef: any) {
   console.log('Stored TxnRef:', txnRef);
 }
 
-// export function clearTestResults(): void {
-//     const resultsDir = path.join(process.cwd(), 'test-results');
-
-//     if (fs.existsSync(resultsDir)) {
-//         for (const item of fs.readdirSync(resultsDir)) {
-//             fs.rmSync(path.join(resultsDir, item), {
-//                 recursive: true,
-//                 force: true,
-//             });
-//         }
-//     }
-
-//     console.log(`Cleared contents of: ${resultsDir}`);
-    
-// }
-
 export function clearTestResults(): void {
     const dirsToClean = [
         'test-results',

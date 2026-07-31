@@ -29,43 +29,37 @@ export async function writeExcelResults(
         sheetName
     );
 
-    XLSX.writeFile(workbook, outputFile);
+    // XLSX.writeFile(workbook, outputFile);
+    const buffer = XLSX.write(workbook, {
+    type: 'buffer',
+    bookType: 'xlsx'
+});
+
+fs.writeFileSync(outputFile, buffer);
 }
 
 //Use to generate an excel based on runtime data and attach to each test
 export async function generateAndAttachExcelResults(
     sheetName: string,
-    testData: any[],
+    currentRow: any,
     testInfo: TestInfo
 ): Promise<void> {
-    const timestamp = new Date()
-        .toISOString()
-        .replace(/[:.]/g, '-');
-
-    const outputFile = testInfo.outputPath(
-        `${sheetName}_Results_${timestamp}.xlsx`
-    );
-
-    const executedRows = testData.filter(
-        row =>
-            row.ExecutionFlag
-                ?.toString()
-                .trim()
-                .toUpperCase() === 'Y'
-    );
+const timestamp = Date.now();
+let outputFile: any="";
+outputFile = testInfo.outputPath(`${sheetName}_${timestamp}.xlsx`);
 
     await writeExcelResults(
         sheetName,
-        executedRows,
+        [currentRow], // single runtime row
         outputFile
     );
 
     await testInfo.attach(
-        `${sheetName}_Results.xlsx`,
-        {
-            path: outputFile,
-            contentType:
-                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        }
-    );
+    `${sheetName}_${timestamp}.xlsx`,
+    {
+        path: outputFile,
+        contentType:
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    }
+);
 }

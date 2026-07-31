@@ -1,0 +1,72 @@
+================ GENERATE BEARER TOKEN ================
+Access Token: baAM3MSvX8gAS4KdclRrTpXleFjmvqED
+Token to use: baAM3MSvX8gAS4KdclRrTpXleFjmvqED
+================ REQUEST ================
+Endpoint: https://proxy-apim-external-test.eastwestbanker.com/sandbox/send-funds/localft/v1/initiate
+Headers: {
+  "Authorization": "baAM3MSvX8gAS4KdclRrTpXleFjmvqED",
+  "Content-Type": "application/json",
+  "api-key": "GsG5c0UhuhXUPj4XlY8G1kcjKioiFrqI",
+  "idempotency-key": "9048830781052",
+  "partner-id": "1042346954",
+  "x-correlation-id": "924fdda7-26f7-414b-ac56-9214ff796881"
+}
+params: {
+  "channel": "INTRABANK",
+  "sender": {
+    "sourceAccountNumber": "200061777902",
+    "ultimateSenderName": "Lorence Ecle"
+  },
+  "beneficiary": {
+    "bankCode": "EWBCPHMMXXX",
+    "targetAccountNumber": "200061812368",
+    "ultimateBeneficiaryName": "Pao Casipe"
+  },
+  "transfer": {
+    "amount": 1
+  },
+  "meta": {
+    "ipAddress": "203.0.113.42",
+    "geoLatitude": "undefined",
+    "geoLongitude": "120.984200",
+    "deviceId": "device-abc123",
+    "userAgent": "AcmePayrollApp/2.1",
+    "country": "Philippines",
+    "applicationType": "Desktop",
+    "ipCity": "Mandaluyong"
+  }
+}
+================ RESPONSE ================
+Expected Status: 200
+Received Status: 404
+Headers: {
+  "date": "Fri, 31 Jul 2026 02:08:12 GMT",
+  "content-type": "application/json",
+  "transfer-encoding": "chunked",
+  "connection": "keep-alive",
+  "x-content-type-options": "nosniff",
+  "x-xss-protection": "0",
+  "server": "istio-envoy",
+  "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+  "x-envoy-upstream-service-time": "38",
+  "x-frame-options": "DENY",
+  "expires": "0",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+  "pragma": "no-cache",
+  "gw-traceid": "fd2181fd5c68087e",
+  "gw-spanid": "26610321",
+  "x-kong-upstream-latency": "45",
+  "x-kong-proxy-latency": "3",
+  "via": "kong/3.5.0",
+  "x-kong-request-id": "ba73d453f797626931cdc445e7ecd107"
+}
+Body: {
+  "error": {
+    "userMessage": "Path not found.",
+    "statusCode": "Api-Builder-5"
+  }
+}
+================ TRANSACTION ================
+Stored TxnID: undefined
+Stored TxnRef: undefined
