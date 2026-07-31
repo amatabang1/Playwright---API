@@ -3,7 +3,7 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiTest = env.LiveBase;
+const apiEnvi = env.LiveBase;
 
 //Passed the worksheet related to the test to get the data set
 const testData: any[] = XLutil.getExcelData('PTLAuthAPI');
@@ -11,7 +11,7 @@ const testData: any[] = XLutil.getExcelData('PTLAuthAPI');
 test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regression', '@AuthAPI'] }, () => {
   for (const data of testData) {
     test(`${data.Description}`, async ({ request }, testInfo) => {
-      
+
       //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
 
@@ -32,10 +32,10 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
 
       //Trigger the api call for POST
       const response = await request.post(
-        `${apiTest}${data.IN_EndPoint}`,
+        `${apiEnvi}${data.IN_EndPoint}`,
         {
           headers: reqHeaders,
-          form: body,
+          data: JSON.stringify(body),
         }
       );
 
@@ -48,7 +48,7 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
       }
 
       //Log API request and response
-      util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, null, body);
+      util.logRequest(apiEnvi, data.IN_EndPoint, reqHeaders, null, body);
       util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody);
 
       //Output values into data table

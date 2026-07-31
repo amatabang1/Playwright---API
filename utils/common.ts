@@ -69,9 +69,9 @@ export async function getBearerToken(
   };
 
   console.log('================ GENERATE BEARER TOKEN ================');
-  // console.log('Endpoint:', `${vEnvi}${vEndPt}`);
-  // console.log('Headers:', JSON.stringify(reqHeaders, null, 2));
-  // console.log('Body:', JSON.stringify(requestBody, null, 2));
+  console.log('Endpoint:', `${vEnvi}${vEndPt}`);
+  console.log('Headers:', JSON.stringify(reqHeaders, null, 2));
+  console.log('Body:', JSON.stringify(requestBody, null, 2));
 
   const response = await request.post(`${vEnvi}${vEndPt}`, {
     headers: reqHeaders,
