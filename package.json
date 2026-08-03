@@ -1,13 +1,20 @@
 {
   "dependencies": {
-    "playwright": "^1.61.1",
+    "playwright": "^1.62.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.1",
-    "allure-playwright": "^3.10.2"
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
+    "rimraf": "^6.0.1"
   },
-  
-  "scripts": {"test:allure": "rimraf allure-results allure-report && playwright test && allure serve allure-results"}
+
+  "scripts": {
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report --report-name \"STS - API Test Automation Execution Report\"",
+    "allure:brand": "node branding/brand-allure.js",
+    "allure:open": "npx allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:brand && npm run allure:open"
+  }
 }
