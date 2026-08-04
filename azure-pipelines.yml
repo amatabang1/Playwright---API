@@ -1,0 +1,49 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  NODE_VERSION: '20.x'
+  TEST_TAG: '@Regression'
+
+steps:
+
+# Install Node.js
+- task: NodeTool@0
+  displayName: 'Install Node.js'
+  inputs:
+    versionSpec: $(NODE_VERSION)
+
+# Install dependencies
+- script: |
+    npm ci
+  displayName: 'Install NPM Packages'
+
+# Install Playwright browsers
+- script: |
+    npx playwright install --with-deps
+  displayName: 'Install Playwright Browsers'
+
+# Run Regression Suite
+- script: |
+    npx playwright test --grep "$(TEST_TAG)"
+  displayName: 'Run Regression Tests'
+  continueOnError: true
+
+# Generate Allure Report
+- script: |
+    npm run allure:generate
+
+    if [ -f "branding/brand-allure.js" ]; then
+      npm run allure:brand
+    fi
+  displayName: 'Generate Allure Report'
+  condition: always()
+
+# Publish JUnit Results to Azure Test Runs
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFormat
