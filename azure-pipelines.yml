@@ -26,6 +26,19 @@ steps:
     npx playwright install --with-deps
   displayName: 'Install Playwright Browsers'
 
+# Clean previous reports
+- script: |
+    echo "Cleaning previous reports..."
+
+    rm -rf allure-results
+    rm -rf allure-report
+    rm -rf playwright-report
+
+    mkdir -p allure-results
+
+    echo "Cleanup complete"
+  displayName: 'Clean Previous Reports'
+
 # Run Regression Suite
 - script: |
     npx playwright test --grep "$(TEST_TAG)"
@@ -34,6 +47,10 @@ steps:
 
 # Generate Allure Report
 - script: |
+    echo "Generating Allure Report..."
+
+    rm -rf allure-report
+
     npm run allure:generate
 
     if [ -f "branding/brand-allure.js" ]; then
@@ -42,6 +59,16 @@ steps:
   displayName: 'Generate Allure Report'
   condition: always()
 
+# Verify generated report contents
+- script: |
+    echo "Verifying Allure Report Contents..."
+    ls -la allure-report
+    ls -la allure-report/data || true
+    ls -la allure-report/widgets || true
+  displayName: 'Verify Allure Report'
+  condition: always()
+
+# Publish Test Results
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
   inputs:
@@ -52,7 +79,7 @@ steps:
     testRunTitle: 'Playwright Regression Run'
   condition: always()
 
-  # Publish Allure HTML Report
+# Publish Allure HTML Report
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Allure Report'
   inputs:
