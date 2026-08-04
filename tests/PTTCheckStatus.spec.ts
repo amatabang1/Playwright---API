@@ -48,7 +48,7 @@ test.describe('Promote to Test - Check Status API Test Suite', { tag: ['@PTTest'
 
       //Output values into data table
       data.OUT_RequestHeaders = JSON.stringify(reqHeaders, null, 2);
-      data.OUT_RequestBody = JSON.stringify(responseBody, null, 2);
+      data.OUT_RequestBody = JSON.stringify(params, null, 2);
       data.OUT_ResponseHeaders = JSON.stringify(response.headers(), null, 2);
       data.OUT_ResponseBody = XLutil.truncateForExcel(JSON.stringify(responseBody, null, 2));
 
