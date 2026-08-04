@@ -110,24 +110,24 @@ export async function getBearerToken(
   return accessToken;
 }
 
-export function logRequest( apiBaseUrl: any,endpoint: any, headers: any, params: any, body: any) {
+export function logRequest(apiBaseUrl: any, endpoint: any, headers: any, params: any, body: any) {
   console.log('================ REQUEST ================');
   console.log('Endpoint:', `${apiBaseUrl}${endpoint}`);
   console.log('Headers:', JSON.stringify(headers, null, 2));
-  if (params !== null){
+  if (params !== null) {
     console.log('params:', JSON.stringify(params, null, 2));
   }
-  if (body !== null){
+  if (body !== null) {
     console.log('params:', JSON.stringify(body, null, 2));
   }
 }
 
 export function logResponse(expectedStatus: any, response: any, responseHeaders: any, responseBody: any) {
   console.log('================ RESPONSE ================');
-  console.log('Expected Status:', expectedStatus);
-  console.log('Received Status:', response);
   console.log('Headers:', JSON.stringify(responseHeaders, null, 2));
   console.log('Body:', JSON.stringify(responseBody, null, 2));
+  console.log('Expected Status:', expectedStatus);
+  console.log('Received Status:', response);
 }
 
 export function logTransaction(txnID: any, txnRef: any) {
@@ -137,24 +137,24 @@ export function logTransaction(txnID: any, txnRef: any) {
 }
 
 export function clearTestResults(): void {
-    const dirsToClean = [
-        'test-results',
-        'allure-results',
-        //'allure-report',
-    ];
+  const dirsToClean = [
+    'test-results',
+    'allure-results',
+    //'allure-report',
+  ];
 
-    for (const dir of dirsToClean) {
-        const targetDir = path.join(process.cwd(), dir);
+  for (const dir of dirsToClean) {
+    const targetDir = path.join(process.cwd(), dir);
 
-        if (fs.existsSync(targetDir)) {
-            for (const item of fs.readdirSync(targetDir)) {
-                fs.rmSync(path.join(targetDir, item), {
-                    recursive: true,
-                    force: true,
-                });
-            }
-        }
-
-        console.log(`Cleared contents of: ${targetDir}`);
+    if (fs.existsSync(targetDir)) {
+      for (const item of fs.readdirSync(targetDir)) {
+        fs.rmSync(path.join(targetDir, item), {
+          recursive: true,
+          force: true,
+        });
+      }
     }
+
+    console.log(`Cleared contents of: ${targetDir}`);
+  }
 }

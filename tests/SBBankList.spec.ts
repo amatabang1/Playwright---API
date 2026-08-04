@@ -14,7 +14,7 @@ test.describe('Sandbox - Bank List API Test Suite', { tag: ['@Sandbox', '@Regres
 
       //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
-      
+
       //Constructor for request headers
       const reqHeaders = {
         'api-key': String(data.IN_HeadAPIKey).trim(),
@@ -51,7 +51,7 @@ test.describe('Sandbox - Bank List API Test Suite', { tag: ['@Sandbox', '@Regres
       data.OUT_RequestHeaders = JSON.stringify(reqHeaders, null, 2);
       data.OUT_RequestBody = JSON.stringify(responseBody, null, 2);
       data.OUT_ResponseHeaders = JSON.stringify(response.headers(), null, 2);
-      data.OUT_ResponseBody = JSON.stringify(responseBody, null, 2);
+      data.OUT_ResponseBody = XLutil.truncateForExcel(JSON.stringify(responseBody, null, 2));
 
       //Attaching first the generated runtime data table file before assertions
       await XLutil.generateAndAttachExcelResults(data.TC_ID, data, testInfo);

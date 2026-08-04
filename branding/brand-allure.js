@@ -114,7 +114,7 @@ DARK MODE
 .theme_dark .side-nav,
 body.dark .side-nav,
 [data-theme="dark"] .side-nav {
-background-color: #d5e04d !important;
+background-color: #B2006F !important;
 }
 
 .theme_dark .side-nav,
@@ -135,7 +135,7 @@ body.dark .side-nav li,
 [data-theme="dark"] .side-nav span,
 [data-theme="dark"] .side-nav div,
 [data-theme="dark"] .side-nav li {
-color: #B2006F !important;
+color: #ffffff !important;
 }
 
 /* Report title in Light Mode */

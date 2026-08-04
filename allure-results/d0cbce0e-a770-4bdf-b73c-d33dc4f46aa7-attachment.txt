@@ -1,0 +1,2022 @@
+================ REQUEST ================
+Endpoint: https://proxy-apim-external-test.eastwestbanker.com/sandbox/send-funds/localft/v1/list/institutions?channel=
+Headers: {
+  "api-key": "GsG5c0UhuhXUPj4XlY8G1kcjKioiFrqI",
+  "partner-id": "1042346954",
+  "x-correlation-id": "application/x-www-form-urlencoded"
+}
+params: {
+  "channel": "undefined"
+}
+================ RESPONSE ================
+Expected Status: 400
+Received Status: 200
+Headers: {
+  "date": "Tue, 04 Aug 2026 06:44:52 GMT",
+  "content-type": "application/json",
+  "content-length": "54898",
+  "connection": "keep-alive",
+  "x-xss-protection": "0",
+  "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+  "x-frame-options": "DENY",
+  "x-envoy-upstream-service-time": "43",
+  "x-log-id": "6a718a649f5e641b06befcb1",
+  "server": "istio-envoy",
+  "expires": "0",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "x-content-type-options": "nosniff",
+  "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+  "pragma": "no-cache",
+  "gw-traceid": "b945ac0fefa17e11",
+  "gw-spanid": "21315032",
+  "x-kong-upstream-latency": "47",
+  "x-kong-proxy-latency": "0",
+  "via": "kong/3.5.0",
+  "x-kong-request-id": "f6bfb11ac7bc5d79bf7dbd38217a2d3c"
+}
+Body: {
+  "data": [
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "AGBUPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Agribusiness Rural Bank, Inc"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "AIIPPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Al-Amanah Islamic Invest. Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "APHIPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Alipay / Lazada Wallet"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "OPDVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Allbank, Inc. - InstaPay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ALKBPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Allbank, Inc. - PESONet"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "AUBKPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "AUBKPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Asia United Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ANZBPHMXXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Australia and New Zealand Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "BFSRPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Banana Fintech / BananaPay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "KARUPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bangko Kabayan"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MRTCPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MRTCPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Bangko Mabuhay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "NSPRPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bangko Nuestra Senora Del Pilar Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BKKBPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bangkok Bank Public Company Limited Manila Branch"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BOFAPH2XXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bank of America, Nat’l Assn."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BKCHPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "BKCHPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Bank of China"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PABIPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PABIPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Bank of Commerce"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BORRPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bank of Florida"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MKRUPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bank of Makati"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BPDIPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "BPDIPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "BanKo, A Subsidiary of BPI"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUATPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Bayanihan Bank Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ONNRPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "ONNRPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "BDO Network Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BNORPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "BNORPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "BDO Unibank Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BIURPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Binan Rural Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "BIUUPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Binangonan Rural Bank / BRBDigital"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BOPIPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "BOPIPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "BPI / BPI Family Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUCAPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "RUCAPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Camalig Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CNRLPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CNRLPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Cantilan Bank, Inc. (A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CBMFPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Card Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CAMZPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "CARD MRI RBI"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CRMHPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "CARD SME Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "UWCBPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Cathay United Bank Co Ltd"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CELRPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CELRPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Cebuana Lhuillier Bank/Cebuana Express"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CHBKPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CHBKPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "China Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CHSVPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CHSVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "China Bank Savings, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CIPHPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CIPHPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "CIMB Philippines, Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CIYCPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "CIS Bayad Center / Bayad"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CITIPHMXXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Citibank N.A."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CIVAPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CIVAPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "City Savings Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CBQPPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Cooperative Bank of Quezon Province"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "COUKPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Country Builders Bank, Inc. (A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CTCBPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CTCBPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "CTBC Bank (Philippines) Corp."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "DCPHPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "DCPHPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "DCPay / COINS.PH"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "DEUTPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Deutsche Bank AG"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "DBPHPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "DBPHPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Development Bank of the Philippines"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "DCDEPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "DCDEPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Dumaguete City Development Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "DUMTPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "DUMTPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Dungganon Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "EWBCPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "East West Banking Corporation"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "EAWRPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "EAWRPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "East West Rural Bank / Komo"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "EAGMPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "EAGMPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "EASYPAY GLOBAL EMI CORP"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "ECASPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "ECASHPAY ASIA INC"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "ENRUPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Entrepreneur Bank Inc.(A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "EQSNPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "EQSNPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Equicom Savings Bank Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "FIOOPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "First Consolidated Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "GXCHPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "GXCHPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "G-Exchange / GCash"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "GOTYPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "GOTYPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "GoTyme Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "GPNEPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "GPNEPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Grabpay Philippines"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "GRBUPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Guagua Rural Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "HSBCPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "HSBCPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Hongkong and Shanghai Banking Corporation Limited, The"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "IREMPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "I-Remit/iCASH"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ICBKPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Industrial & Commercial Bank of China, Ltd"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "IBKOPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Industrial Bank of Korea"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "IFIPPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Infoserve / Nationlink"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "ING BANK N.V - Retail Banking"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "ING Bank N.V."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "IORUPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Innovative Bank, Inc. (A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "ISTHPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Isla Bank (A Thrift Bank), Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CHASPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "JPMorgan Chase Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "KOEXPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "KEB Hana Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "LPCRPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Laguna Prestige Banking Corporation"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "TLBPPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TLBPPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Landbank/OFBank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "LESIPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Legazpi Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "LOLPPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "LOLC Bank Philippines, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "LFSHPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "LFSHPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Lulu Money"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "LUDVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Luzon Development Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MLRUPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Malarayat Rural Bank Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MAARPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MAARPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Malayan Savings Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MAYCPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "MARCOPAY"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MYDBPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Maya Bank, Inc. - InstaPay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MYYAPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Maya Bank, Inc. - PESONet"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PAPHPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PAPHPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Maya Philippines, Inc./Maya Wallet"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MBBEPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MBBEPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Maybank Philippines Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ICBCPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Mega International Commercial Bank Co., Ltd."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MBTCPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MBTCPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Metrobank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "MIOCPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Mindanao Consolidated CoopBank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MHCBPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Mizuho Bank, Ltd."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MOMLPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Money Mall Rural Bank Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "BOTKPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "MUFG Bank, Ltd."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "MVRSPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "MVSM Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CUOBPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CUOBPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Netbank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "NRSLPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "New Rural Bank of San Leonardo (Nueva Ecija), Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "OMNPPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Omnipay, Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "OWNBPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Own Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "OWNOPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Own Bank, The Rural Bank of Cavite City, Inc."
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PASVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Pacific Ace Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PPSFPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "PalawanPay"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PRTOPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Partner Rural Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PAEYPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PAEYPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Paymongo Payments Inc"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PAHCPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Paynamics Technologies Inc"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PPBIPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Peppermint Bizmoto, Inc"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "CPHIPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "CPHIPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Philippine Bank of Communications"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PPBUPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PPBUPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Philippine Business Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PDAXPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PDAXPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Philippine Digital Asset Exchange, Inc. / PDAX"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PNBMPHMMTOD"
+      },
+      "enable": true,
+      "institutionName": "Philippine National Bank (PNB) - InstaPay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PNBMPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Philippine National Bank (PNB) - PESONet"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PHSBPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PHSBPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Philippine Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PHTBPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PHTBPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Philtrust Bank (Philippine Trust Company)"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PSCOPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PSCOPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Producers Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "QCDFPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "QCDFPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Queenbank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "QCRIPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Quezon Capital Rural Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RARLPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "RARLPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Rang-Ay Bank, Inc. (A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RBRUPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "RBT Bank, Inc. (A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "RCBC SAVINGS BANK"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RCBCPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "RCBCPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "RCBC/DiskarTech"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ROBPPHMQXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "ROBPPHMQXXX"
+      },
+      "enable": true,
+      "institutionName": "Robinsons Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUANPH22XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Angeles Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUBCPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Bacolod City"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUBUPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Bauang Inc (RBBI)"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUDIPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Digos, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUGUPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "RUGUPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Guinobatan / Asenso"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUPZPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of La Paz"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RLSKPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Lebak (Sultan Kudarat) Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUMNPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Mangaldan Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUMTPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Montalban Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RSNAPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Narciso"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUPPPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Porac (Pampanga), Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RURUPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Rosario (L.U.) Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUSYPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Sagay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RBSMPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "RBSMPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of San Medjugorje INC"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUSTPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Silay City, Inc"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUSGPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Rural Bank of Sta. Ignacia Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "SLRNPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Salmon Bank (Rural Bank), Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "LAUIPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "LAUIPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Seabank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "SETCPHMMXXY"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SETCPHMMXXY"
+      },
+      "enable": true,
+      "institutionName": "Security Bank Corporation"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SETCPHMM000"
+      },
+      "enable": true,
+      "institutionName": "Security Bank Corporation 2"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "SHBKPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Shinhan Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SHPHPHM2XXZ"
+      },
+      "enable": true,
+      "institutionName": "ShopeePay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "SCUAPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "SouthEast Country Bank, Inc. (A Rural Bank)"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SPEYPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "SpeedyPay / eMango Pay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "SCBLPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SCBLPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Standard Chartered Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SRCPPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Starpay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "STLAPH22XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "STLAPH22XXX"
+      },
+      "enable": true,
+      "institutionName": "Sterling Bank of Asia"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "SMBCPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Sumitomo Mitsui Banking Corporation"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "RUBTPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "SUMMIT BANK (RURAL BANK OF TUBLAY, INC.)"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "SUSVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Sun Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "TAGCPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Tagcash Ltd., Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "TAYOPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TAYOPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "TayoCash"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TOKTPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "TOKTOKWALLET"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TDBIPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Tonik Bank - InstaPay"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "TODGPHM2XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Tonik Bank - PESONet"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TOPJPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Top Juan Tech Corporation"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TRXPPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "TraxionPay/DigiCOOP/COOPNET"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": true,
+        "bic": "UCSVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "UCPB Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "UBPHPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "UBPHPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Union Bank of the Philippines"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "UNODPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "UNODPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "UnionDigital Bank"
+    },
+    {
+      "pesonet": {
+        "status": false,
+        "bic": null
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "United Coconut Planters Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "UOVBPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "United Overseas Bank Philippines"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "UNOBPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "UNOBPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "UNObank Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "USMEPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "USMEPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "USSC Money Services"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "PHVBPHMMXXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "PHVBPHMMXXX"
+      },
+      "enable": true,
+      "institutionName": "Veterans Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "VBRIPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "VBRIPHM2XXX"
+      },
+      "enable": false,
+      "institutionName": "VIGAN BANCO RURAL"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "VGBCPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Vigan Banco Rural Incorporada"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "WEDVPHM1XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "WEDVPHM1XXX"
+      },
+      "enable": true,
+      "institutionName": "Wealth Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "TRWIPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "TRWIPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Wise Pilipinas, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "TYBKPHMMXXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Yuanta Savings Bank"
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ZARUPHM1XXX"
+      },
+      "instapay": {
+        "status": false,
+        "bic": null
+      },
+      "enable": true,
+      "institutionName": "Zambales Rural Bank, Inc."
+    },
+    {
+      "pesonet": {
+        "status": true,
+        "bic": "ZBTEPHM2XXX"
+      },
+      "instapay": {
+        "status": true,
+        "bic": "ZBTEPHM2XXX"
+      },
+      "enable": true,
+      "institutionName": "Zybi Tech Inc. / JuanCash"
+    }
+  ]
+}
+821
+32767

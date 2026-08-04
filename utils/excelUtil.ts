@@ -12,7 +12,6 @@ export function getExcelData(sheetName: string) {
     return XLSX.utils.sheet_to_json(worksheet);
 }
 
-//create excel for test results
 export async function writeExcelResults(
     sheetName: string,
     data: any[],
@@ -20,8 +19,18 @@ export async function writeExcelResults(
 ) {
     fs.mkdirSync('./test-results', { recursive: true });
 
+    // Ensure all cell values comply with Excel limits
+    const sanitizedData = data.map(row =>
+        Object.fromEntries(
+            Object.entries(row).map(([key, value]) => [
+                key,
+                truncateForExcel(value)
+            ])
+        )
+    );
+
     const workbook = XLSX.utils.book_new();
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    const worksheet = XLSX.utils.json_to_sheet(sanitizedData);
 
     XLSX.utils.book_append_sheet(
         workbook,
@@ -29,13 +38,12 @@ export async function writeExcelResults(
         sheetName
     );
 
-    // XLSX.writeFile(workbook, outputFile);
     const buffer = XLSX.write(workbook, {
-    type: 'buffer',
-    bookType: 'xlsx'
-});
+        type: 'buffer',
+        bookType: 'xlsx'
+    });
 
-fs.writeFileSync(outputFile, buffer);
+    fs.writeFileSync(outputFile, buffer);
 }
 
 //Use to generate an excel based on runtime data and attach to each test
@@ -44,9 +52,9 @@ export async function generateAndAttachExcelResults(
     currentRow: any,
     testInfo: TestInfo
 ): Promise<void> {
-const timestamp = Date.now();
-let outputFile: any="";
-outputFile = testInfo.outputPath(`${sheetName}_${timestamp}.xlsx`);
+    const timestamp = Date.now();
+    let outputFile: any = "";
+    outputFile = testInfo.outputPath(`${sheetName}_${timestamp}.xlsx`);
 
     await writeExcelResults(
         sheetName,
@@ -55,11 +63,26 @@ outputFile = testInfo.outputPath(`${sheetName}_${timestamp}.xlsx`);
     );
 
     await testInfo.attach(
-    `${sheetName}_${timestamp}.xlsx`,
-    {
-        path: outputFile,
-        contentType:
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        `${sheetName}_${timestamp}.xlsx`,
+        {
+            path: outputFile,
+            contentType:
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        }
+    );
+}
+
+export function truncateForExcel(value: any): string {
+    const MAX_EXCEL_CELL_LENGTH = 32767;
+    const suffix = '\n[TRUNCATED]';
+
+    if (value === null || value === undefined) {
+        return '';
     }
-);
+
+    const str = String(value);
+
+    return str.length > MAX_EXCEL_CELL_LENGTH
+        ? str.slice(0, MAX_EXCEL_CELL_LENGTH - suffix.length) + suffix
+        : str;
 }

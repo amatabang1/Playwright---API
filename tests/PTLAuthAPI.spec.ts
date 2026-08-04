@@ -55,7 +55,7 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
       data.OUT_RequestHeaders = JSON.stringify(reqHeaders, null, 2);
       data.OUT_RequestBody = JSON.stringify(body, null, 2);
       data.OUT_ResponseHeaders = JSON.stringify(response.headers(), null, 2);
-      data.OUT_ResponseBody = JSON.stringify(responseBody, null, 2);
+      data.OUT_ResponseBody = XLutil.truncateForExcel(JSON.stringify(responseBody, null, 2));
 
       //Attaching first the generated runtime data table file before assertions
       await XLutil.generateAndAttachExcelResults(data.TC_ID, data, testInfo);

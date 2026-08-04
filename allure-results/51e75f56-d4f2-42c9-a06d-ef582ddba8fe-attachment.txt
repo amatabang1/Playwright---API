@@ -1,0 +1,50 @@
+================ REQUEST ================
+Endpoint: https://proxy-apim-external-test.eastwestbanker.com/sandbox/send-funds/localft/v1/list/institutions?channel=PESONET
+Headers: {
+  "api-key": "GsG5c0UhuhXUPj4XlY8G1kcjKioiFrqI",
+  "partner-id": "1042346954",
+  "x-correlation-id": "application/x-www-form-urlencoded"
+}
+params: {
+  "channel": "undefined"
+}
+================ RESPONSE ================
+Expected Status: 200
+Received Status: 400
+Headers: {
+  "date": "Tue, 04 Aug 2026 06:34:51 GMT",
+  "content-type": "application/json",
+  "content-length": "374",
+  "connection": "keep-alive",
+  "server": "istio-envoy",
+  "x-content-type-options": "nosniff",
+  "x-xss-protection": "0",
+  "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+  "x-envoy-upstream-service-time": "19",
+  "x-frame-options": "DENY",
+  "x-log-id": "6a71880bb95827214946ce59",
+  "expires": "0",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+  "pragma": "no-cache",
+  "gw-traceid": "88a47c6391bfc309",
+  "gw-spanid": "70362473",
+  "x-kong-upstream-latency": "22",
+  "x-kong-proxy-latency": "1",
+  "via": "kong/3.5.0",
+  "x-kong-request-id": "6501e056fe8f4242913e9678e6b0cb08"
+}
+Body: {
+  "status": "FAILED",
+  "authId": "auth-bd15816a-032e-4950-a1ac-243310a3f327",
+  "errors": [
+    {
+      "errorCode": "INVALID_CHANNEL",
+      "errorDescription": "Invalid Channel. The Channel provided is invalid."
+    }
+  ],
+  "responseCode": "400",
+  "responseDescription": "Invalid Channel. The Channel provided is invalid."
+}
+819
+331
