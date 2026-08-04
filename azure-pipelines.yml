@@ -51,3 +51,27 @@ steps:
     failTaskOnFailedTests: false
     testRunTitle: 'Playwright Regression Run'
   condition: always()
+
+  # Publish Allure HTML Report
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Allure Report'
+  inputs:
+    targetPath: 'allure-report'
+    artifact: 'allure-report'
+  condition: always()
+
+# Publish Allure Results
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Allure Results'
+  inputs:
+    targetPath: 'allure-results'
+    artifact: 'allure-results'
+  condition: always()
+
+# Publish Playwright HTML Report
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Playwright Report'
+  inputs:
+    targetPath: 'playwright-report'
+    artifact: 'playwright-report'
+  condition: always()
