@@ -42,8 +42,12 @@ steps:
   displayName: 'Generate Allure Report'
   condition: always()
 
-# Publish JUnit Results to Azure Test Runs
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
   inputs:
-    testResultsFormat
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/results.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: false
+    testRunTitle: 'Playwright Regression Run'
+  condition: always()
