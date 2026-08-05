@@ -33,6 +33,7 @@ steps:
     rm -rf allure-results
     rm -rf allure-report
     rm -rf playwright-report
+    rm -rf monocart-report
 
     mkdir -p allure-results
 
@@ -49,7 +50,7 @@ steps:
 - script: |
     echo "Generating Allure Report..."
 
-    npm run allure:report
+    allure generate allure-results --clean -o allure-report
 
   displayName: 'Generate Allure Report'
   condition: always()
@@ -96,4 +97,12 @@ steps:
   inputs:
     targetPath: 'playwright-report'
     artifact: 'playwright-report'
+  condition: always()
+
+  # Publish Monocart Report
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Monocart Report'
+  inputs:
+    targetPath: 'monocart-report'
+    artifact: 'monocart-report'
   condition: always()
