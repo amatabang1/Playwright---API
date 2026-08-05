@@ -41,7 +41,7 @@ steps:
 
 # Run Regression Suite
 - script: |
-    npx playwright test --grep "$(TEST_TAG)"
+    npx playwright test --grep "$(TEST_TAG)" --workers=4
   displayName: 'Run Regression Tests'
   continueOnError: true
 
@@ -49,13 +49,8 @@ steps:
 - script: |
     echo "Generating Allure Report..."
 
-    rm -rf allure-report
+    npm run allure:report
 
-    npm run allure:generate
-
-    if [ -f "branding/brand-allure.js" ]; then
-      npm run allure:brand
-    fi
   displayName: 'Generate Allure Report'
   condition: always()
 
