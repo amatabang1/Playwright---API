@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   NODE_VERSION: '20.x'
@@ -23,43 +23,58 @@ steps:
 
 # Install Playwright browsers
 - script: |
-    npx playwright install --with-deps
+    npx playwright install
   displayName: 'Install Playwright Browsers'
 
 # Clean previous reports
-- script: |
-    echo "Cleaning previous reports..."
+- powershell: |
+    Write-Host "Cleaning previous reports..."
 
-    rm -rf allure-results
-    rm -rf allure-report
-    rm -rf playwright-report
+    if (Test-Path "allure-results") {
+      Remove-Item "allure-results" -Recurse -Force
+    }
 
-    mkdir -p allure-results
+    if (Test-Path "allure-report") {
+      Remove-Item "allure-report" -Recurse -Force
+    }
 
-    echo "Cleanup complete"
+    if (Test-Path "playwright-report") {
+      Remove-Item "playwright-report" -Recurse -Force
+    }
+
+    New-Item -ItemType Directory -Path "allure-results" -Force
+
+    Write-Host "Cleanup complete"
   displayName: 'Clean Previous Reports'
 
 # Run Regression Suite
 - script: |
-    npx playwright test --grep "$(TEST_TAG)" --workers=4
+    npx playwright test --grep "$(TEST_TAG)" --workers=2
   displayName: 'Run Regression Tests'
   continueOnError: true
 
 # Generate Allure Report
 - script: |
-    echo "Generating Allure Report..."
-
+    echo Generating Allure Report...
     npm run allure:report
-
   displayName: 'Generate Allure Report'
   condition: always()
 
 # Verify generated report contents
-- script: |
-    echo "Verifying Allure Report Contents..."
-    ls -la allure-report
-    ls -la allure-report/data || true
-    ls -la allure-report/widgets || true
+- powershell: |
+    Write-Host "Verifying Allure Report Contents..."
+
+    if (Test-Path "allure-report") {
+      Get-ChildItem "allure-report"
+    }
+
+    if (Test-Path "allure-report\data") {
+      Get-ChildItem "allure-report\data"
+    }
+
+    if (Test-Path "allure-report\widgets") {
+      Get-ChildItem "allure-report\widgets"
+    }
   displayName: 'Verify Allure Report'
   condition: always()
 
