@@ -2,8 +2,9 @@ trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
-
+  name: 'KatalonPool-VM'
+  demands:
+    - Agent.Name -equals Embedded-Agent-01
 variables:
   NODE_VERSION: '20.x'
   TEST_TAG: '@Regression'
