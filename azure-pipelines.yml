@@ -58,10 +58,10 @@ steps:
 
 # Verify generated report contents
 - script: |
-    echo "Verifying Allure Report Contents..."
-    ls -la allure-report
-    ls -la allure-report/data || true
-    ls -la allure-report/widgets || true
+    echo Verifying Allure Report Contents...
+    dir allure-report
+    dir allure-report\data
+    dir allure-report\widgets
   displayName: 'Verify Allure Report'
   condition: always()
 
