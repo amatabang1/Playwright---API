@@ -1,0 +1,11 @@
+* [33m0f4b4ab[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31mazure/main[m[33m, [m[1;31mazure/HEAD[m[33m)[m Update azure-pipelines.yml for Azure Pipelines
+* [33m6745afb[m Update azure-pipelines.yml for Azure Pipelines
+* [33med69836[m Set up CI with Azure Pipelines
+* [33mc070ef8[m Increase CI workers to be used for pipeline execution
+* [33m2161439[m Code update for passing request body for banklist and checkstatus APIs
+* [33m815d34b[m Code update for allure custom reports and write excel to max length to handle api response that exceeds
+* [33mafee7eb[m Add Allure branding, EastWest logo, and theme customization
+* [33mb5b5f6f[m[33m ([m[1;32mshow-current[m[33m)[m Updated functions and code optimizations again
+* [33m6e9e4ce[m Updated functions and code optimizations
+* [33m2222277[m first commit
+* [33m5b92da0[m Initial commit

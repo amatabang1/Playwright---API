@@ -15,6 +15,7 @@ test.describe('Promote To Test - Bank List API Test Suite', { tag: ['@PTTest', '
       //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
 
+      //*****************************API CALL CONSTRUCTOR**************************************** */
       //Constructor for request headers
       const reqHeaders = {
         'api-key': String(data.IN_HeadAPIKey).trim(),
@@ -23,8 +24,11 @@ test.describe('Promote To Test - Bank List API Test Suite', { tag: ['@PTTest', '
       };
       //Constructor for request params
       const params = {
-        'channel': String(data.In_Channel).trim()
+        ...(data?.IN_ParamChannel != null && {
+          channel: String(data.IN_ParamChannel).trim(),
+        })
       };
+      //*****************************API CALL CONSTRUCTOR**************************************** */
 
       //Trigger the api call for GET
       const response = await request.get(

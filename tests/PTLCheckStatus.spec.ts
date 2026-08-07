@@ -3,7 +3,7 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiTest = env.LiveBase;
+const apiEnvi = env.LiveBase;
 
 // Passed the worksheet related to the test to get the data set
 const testData: any[] = XLutil.getExcelData('PTLCheckStatus');
@@ -15,6 +15,7 @@ test.describe('Promote to Live - Check Status API Test Suite', { tag: ['@PTLive'
       //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
 
+      //*****************************API CALL CONSTRUCTOR**************************************** */
       //Constructor for request headers
       const reqHeaders = {
         'api-key': String(data.IN_HeadAPIKey).trim(),
@@ -23,13 +24,21 @@ test.describe('Promote to Live - Check Status API Test Suite', { tag: ['@PTLive'
       };
       //Constructor for request params
       const params = {
-        apiTxnId: String(data.IN_APITxnID).trim(),
-        apiTxnRef: String(data.IN_APITxnRef).trim(),
+        ...(data?.IN_ParamAPITxnID != null && {
+          apiTxnId: String(data.IN_ParamAPITxnID).trim(),
+        }),
+        ...(data?.IN_ParamAPITxnRef != null && {
+          apiTxnRef: String(data.IN_ParamAPITxnRef).trim(),
+        }),
+        ...(data?.IN_ParamIdempotencyKey != null && {
+          idempotencyKey: String(data.IN_ParamIdempotencyKey).trim(),
+        }),
       };
+      //*****************************API CALL CONSTRUCTOR**************************************** */
 
       //Trigger the api call for GET
       const response = await request.get(
-        `${apiTest}${data.IN_EndPoint}`, {
+        `${apiEnvi}${data.IN_EndPoint}`, {
         headers: reqHeaders,
         params,
       });
@@ -43,7 +52,7 @@ test.describe('Promote to Live - Check Status API Test Suite', { tag: ['@PTLive'
       }
 
       //Log API request and response
-      util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, params, null);
+      util.logRequest(apiEnvi, data.IN_EndPoint, reqHeaders, params, null);
       util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody);
 
       //Output values into data table

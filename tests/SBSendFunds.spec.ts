@@ -38,7 +38,7 @@ test.describe('Sandbox - SendFunds Test Suite', { tag: ['@Sandbox', '@Regression
             }
             console.log('Token to use:', tokenToUse);
 
-            //Constructor for request headers
+            //*****************************API CALL CONSTRUCTOR**************************************** */
             const reqHeaders = {
                 Authorization: String(tokenToUse).trim(),
                 'Content-Type': String(data.IN_HeadContentType).trim(),
@@ -77,6 +77,7 @@ test.describe('Sandbox - SendFunds Test Suite', { tag: ['@Sandbox', '@Regression
                     ipCity: String(data.IN_IPCity).trim(),
                 },
             };
+            //*****************************API CALL CONSTRUCTOR**************************************** */
 
             //Trigger the api call for POST
             const response = await request.post(

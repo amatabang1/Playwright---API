@@ -15,6 +15,7 @@ test.describe('Promote to Test - Auth API Test Suite', { tag: ['@PTTest', '@Regr
       //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
 
+      //*****************************API CALL CONSTRUCTOR**************************************** */
       //Constructor for request headers
       const reqHeaders = {
         Accept: String(data.IN_HeadAccept).trim(),
@@ -29,6 +30,7 @@ test.describe('Promote to Test - Auth API Test Suite', { tag: ['@PTTest', '@Regr
         accountNumber: String(data.IN_AccountNumber).trim(),
         scope: String(data.IN_Scope).trim(),
       };
+      //*****************************API CALL CONSTRUCTOR**************************************** */
 
       //Trigger the api call for POST
       const response = await request.post(
