@@ -69,6 +69,7 @@ export default defineConfig({
         ['html'],
         ['allure-playwright'],
         ['junit', { outputFile: 'test-results/results.xml' }],
+        ['json', { outputFile: 'test-results/playwright-results.json' }],
         ...(isPipeline ? [monocartReporter] : [])
     ],
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

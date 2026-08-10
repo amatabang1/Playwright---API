@@ -11,6 +11,10 @@ const testData: any[] = XLutil.getExcelData('SBBankList');
 test.describe('Sandbox - Bank List API Test Suite', { tag: ['@Sandbox', '@Regression', '@BankList'] }, () => {
   for (const data of testData) {
     test(`${data.Description}`, async ({ request }, testInfo) => {
+      testInfo.annotations.push({
+        type: 'AzureTestCase',
+        description: String(data.TC_ID)
+      });
 
       //Check for skip test - Execution Flag
       util.skipIfNotExecutable(data.ExecutionFlag);
