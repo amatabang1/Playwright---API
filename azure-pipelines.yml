@@ -5,6 +5,7 @@ pool:
   name: 'STS-Self Hosted'
   demands:
     - Agent.Name -equals STS-SelfHosted-ARM83471
+
 variables:
   NODE_VERSION: '20.x'
   TEST_TAG: '@Regression'
@@ -28,18 +29,23 @@ steps:
   displayName: 'Install Playwright Browsers'
 
 # Clean previous reports
-- script: |
-    echo "Cleaning previous reports..."
-
-    rm -rf allure-results
-    rm -rf allure-report
-    rm -rf playwright-report
-    rm -rf monocart-report
-
-    mkdir -p allure-results
-
-    echo "Cleanup complete"
+- task: PowerShell@2
   displayName: 'Clean Previous Reports'
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Cleaning previous reports..."
+
+      Remove-Item "allure-results" -Recurse -Force -ErrorAction SilentlyContinue
+      Remove-Item "allure-report" -Recurse -Force -ErrorAction SilentlyContinue
+      Remove-Item "playwright-report" -Recurse -Force -ErrorAction SilentlyContinue
+      Remove-Item "monocart-report" -Recurse -Force -ErrorAction SilentlyContinue
+      Remove-Item "test-results" -Recurse -Force -ErrorAction SilentlyContinue
+
+      New-Item -ItemType Directory -Force -Path "allure-results" | Out-Null
+      New-Item -ItemType Directory -Force -Path "test-results" | Out-Null
+
+      Write-Host "Cleanup complete"
 
 # Run Regression Suite
 - script: |
@@ -47,33 +53,99 @@ steps:
   displayName: 'Run Regression Tests'
   continueOnError: true
 
+# Verify test result files
+- task: PowerShell@2
+  displayName: 'Verify Test Results'
+  condition: always()
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Checking test-results folder..."
+
+      if (Test-Path "test-results") {
+          Get-ChildItem "test-results" -Recurse
+      } else {
+          Write-Host "test-results folder not found"
+      }
+
 # Generate Allure Report
 - script: |
-    echo "Generating Allure Report..."
-
+    echo Generating Allure Report...
     allure generate allure-results --clean -o allure-report
-
   displayName: 'Generate Allure Report'
   condition: always()
 
 # Verify generated report contents
-- script: |
-    echo Verifying Allure Report Contents...
-    dir allure-report
-    dir allure-report\data
-    dir allure-report\widgets
+- task: PowerShell@2
   displayName: 'Verify Allure Report'
   condition: always()
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Verifying Allure Report Contents..."
+
+      if (Test-Path "allure-report") {
+          Write-Host "FOUND: allure-report"
+          Get-ChildItem "allure-report"
+      } else {
+          Write-Host "MISSING: allure-report"
+      }
+
+      if (Test-Path "allure-report\data") {
+          Write-Host "FOUND: allure-report\data"
+          Get-ChildItem "allure-report\data"
+      } else {
+          Write-Host "MISSING: allure-report\data"
+      }
+
+      if (Test-Path "allure-report\widgets") {
+          Write-Host "FOUND: allure-report\widgets"
+          Get-ChildItem "allure-report\widgets"
+      } else {
+          Write-Host "MISSING: allure-report\widgets"
+      }
+
+# Verify all report folders before publishing
+- task: PowerShell@2
+  displayName: 'Verify Report Folders'
+  condition: always()
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Checking generated report folders..."
+
+      "allure-results",
+      "allure-report",
+      "playwright-report",
+      "monocart-report",
+      "test-results" | ForEach-Object {
+
+        if (Test-Path $_) {
+          Write-Host "FOUND: $_"
+        }
+        else {
+          Write-Host "MISSING: $_"
+        }
+      }
 
 # Publish Test Results
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/results.xml'
+    testResultsFiles: 'test-results/results.xml'
     mergeTestResults: true
     failTaskOnFailedTests: false
+    publishRunAttachments: true
     testRunTitle: 'Playwright Regression Run'
+  condition: always()
+
+# Publish Playwright JSON Results
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Playwright JSON Results'
+  inputs:
+    targetPath: 'test-results'
+    artifact: 'test-results'
   condition: always()
 
 # Publish Allure HTML Report
@@ -100,7 +172,7 @@ steps:
     artifact: 'playwright-report'
   condition: always()
 
-  # Publish Monocart Report
+# Publish Monocart Report
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Monocart Report'
   inputs:
