@@ -114,6 +114,20 @@ test.describe('Promote To Test - SendFunds Test Suite', { tag: ['@PTTest', '@Reg
 
             //Validation of response code
             expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
+
+            //Validation of response description if not 200
+            if (response.status() !== 200) {
+                let actualDescription = "";
+                if (responseBody && typeof responseBody === "object" && responseBody.responseDescription) {
+                    actualDescription = String(responseBody.responseDescription).trim();
+                } else {
+                    const responseText = await response.text();
+                    const titleMatch = responseText.match(/<title>(.*?)<\/title>/is);
+                    actualDescription = titleMatch?.[1]?.trim() || "";
+                }
+                expect.soft(actualDescription).toBe(String(data.ExpectedResponseDescription || "").trim()
+                );
+            }
         });
     }
 });

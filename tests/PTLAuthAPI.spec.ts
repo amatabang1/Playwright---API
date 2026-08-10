@@ -31,7 +31,7 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
         scope: String(data.IN_Scope).trim(),
       };
       //*****************************API CALL CONSTRUCTOR**************************************** */
-      
+
       //Trigger the api call for POST
       const response = await request.post(
         `${apiEnvi}${data.IN_EndPoint}`,
@@ -64,6 +64,20 @@ test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regr
 
       //Validation of response code
       expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
+
+      //Validation of response description if not 200
+      if (response.status() !== 200) {
+        let actualDescription = "";
+        if (responseBody && typeof responseBody === "object" && responseBody.responseDescription) {
+          actualDescription = String(responseBody.responseDescription).trim();
+        } else {
+          const responseText = await response.text();
+          const titleMatch = responseText.match(/<title>(.*?)<\/title>/is);
+          actualDescription = titleMatch?.[1]?.trim() || "";
+        }
+        expect.soft(actualDescription).toBe(String(data.ExpectedResponseDescription || "").trim()
+        );
+      }
     });
   }
 });
