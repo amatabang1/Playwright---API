@@ -113,7 +113,7 @@ test.describe('Promote To Test - SendFunds Test Suite', { tag: ['@PTTest', '@Reg
             await XLutil.generateAndAttachExcelResults(data.TC_ID, data, testInfo);
 
             //Validation of response code
-            expect.soft(String(data.ExpectedStatus).trim()).toContain(String(response.status()).trim());
+            expect.soft(String(response.status()).trim()).toBe(String(data.ExpectedStatus).trim());
 
             //Validation of response description if not 200
             if (response.status() !== 200) {
