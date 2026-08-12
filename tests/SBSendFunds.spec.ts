@@ -31,10 +31,10 @@ test.describe('Sandbox - SendFunds Test Suite', { tag: ['@Sandbox', '@Regression
             );
             await apiContext.dispose();
 
-            if (data.IN_ExpiredToken === null || data.IN_ExpiredToken === undefined) {
+            if (data.IN_NonGeneratedToken === null || data.IN_NonGeneratedToken === undefined) {
                 tokenToUse = bearerToken;
             } else {
-                tokenToUse = data.IN_ExpiredToken;
+                tokenToUse = data.IN_NonGeneratedToken;
             }
             console.log('Token to use:', tokenToUse);
 
@@ -63,7 +63,7 @@ test.describe('Sandbox - SendFunds Test Suite', { tag: ['@Sandbox', '@Regression
                 },
 
                 transfer: {
-                    amount: Number(data.IN_Amount),
+                    amount: String(data.IN_Amount).trim(),
                 },
 
                 meta: {
