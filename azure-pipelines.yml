@@ -4,7 +4,7 @@ trigger:
 pool:
   name: 'STS-Self Hosted'
   demands:
-    - Agent.Name -equals #STS-SelfHosted-ARM83471
+    - Agent.Name -equals STS-SelfHosted-ARM83471
 
 variables:
   NODE_VERSION: '20.x'
