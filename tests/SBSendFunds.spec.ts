@@ -40,7 +40,9 @@ test.describe('Sandbox - SendFunds Test Suite', { tag: ['@Sandbox', '@Regression
 
             //*****************************API CALL CONSTRUCTOR**************************************** */
             const reqHeaders = {
-                Authorization: String(tokenToUse).trim(),
+                ...(data?.IN_NonGeneratedToken?.trim().toUpperCase() !== "EXCLUDE" && {
+                    Authorization: String(tokenToUse).trim(),
+                }),
                 'Content-Type': String(data.IN_HeadContentType).trim(),
                 'api-key': String(data.IN_HeadAPIKey).trim(),
                 'idempotency-key': String(util.rndValue('Number', 13)).trim(),
