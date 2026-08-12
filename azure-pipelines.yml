@@ -12,11 +12,12 @@ variables:
 
 steps:
 
-# Install Node.js
-- task: NodeTool@0
-  displayName: 'Install Node.js'
-  inputs:
-    versionSpec: $(NODE_VERSION)
+# Verify Node.js installation on the agent
+- script: |
+    echo Checking Node installation...
+    node -v
+    npm -v
+  displayName: 'Check Node'
 
 # Install dependencies
 - script: |
@@ -131,6 +132,7 @@ steps:
 # Publish Test Results
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
+  condition: always()
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'test-results/results.xml'
@@ -138,44 +140,19 @@ steps:
     failTaskOnFailedTests: false
     publishRunAttachments: true
     testRunTitle: 'Playwright Regression Run'
-  condition: always()
 
 # Publish Playwright JSON Results
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Playwright JSON Results'
+  condition: always()
   inputs:
     targetPath: 'test-results'
     artifact: 'test-results'
-  condition: always()
 
 # Publish Allure HTML Report
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Allure Report'
+  condition: always()
   inputs:
     targetPath: 'allure-report'
-    artifact: 'allure-report'
-  condition: always()
-
-# Publish Allure Results
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Allure Results'
-  inputs:
-    targetPath: 'allure-results'
-    artifact: 'allure-results'
-  condition: always()
-
-# Publish Playwright HTML Report
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Playwright Report'
-  inputs:
-    targetPath: 'playwright-report'
-    artifact: 'playwright-report'
-  condition: always()
-
-# Publish Monocart Report
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Monocart Report'
-  inputs:
-    targetPath: 'monocart-report'
-    artifact: 'monocart-report'
-  condition: always()
+    
