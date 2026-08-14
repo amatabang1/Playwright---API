@@ -3,6 +3,11 @@
     "playwright": "^1.62.0",
     "xlsx": "^0.18.5"
   },
+
+    "engines": {
+    "node": "18.x"
+  },
+  
   "devDependencies": {
     "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.1",
@@ -18,3 +23,5 @@
     "allure:report": "npm run allure:generate && npm run allure:brand && npm run allure:open"
   }
 }
+
+
