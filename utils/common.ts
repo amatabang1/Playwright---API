@@ -140,7 +140,7 @@ export function clearTestResults(): void {
   const dirsToClean = [
     'test-results',
     'allure-results',
-    //'allure-report',
+    'allure-report',
   ];
 
   for (const dir of dirsToClean) {
