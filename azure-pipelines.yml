@@ -158,6 +158,14 @@ steps:
     publishRunAttachments: true
     testRunTitle: 'Playwright Regression Run'
 
+# Publish Allure Report to Azure DevOps
+- task: PublishAllureReport@2
+  displayName: 'Publish Allure Report'
+  condition: always()
+  inputs:
+    testResultsDir: 'allure-results'
+    reportName: 'STS - Playwright - Regression Report'
+
 # Publish Raw Test Results
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Test Results Artifact'
@@ -173,7 +181,7 @@ steps:
   condition: always()
   inputs:
     targetPath: 'allure-report'
-    artifact: 'STS-Playwright-Allure-Report'
+    artifact: 'allure-results'
     publishLocation: 'pipeline'
 
 # Publish Monocart Report Artifact
