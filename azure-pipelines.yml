@@ -129,6 +129,15 @@ steps:
         }
       }
 
+# Publish Allure Report to Azure DevOps
+- task: PublishAllureReport@2
+  displayName: 'Publish Allure Report'
+  condition: always()
+  inputs:
+    allureVersion: '2.43.0'
+    testResultsDir: 'allure-results'
+    reportName: 'STS - Playwright - Regression Report'
+
 # Publish Test Results
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
