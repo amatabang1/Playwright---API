@@ -134,7 +134,10 @@ steps:
   displayName: 'Publish Allure Report'
   condition: always()
   inputs:
-    allureVersion: '2.43.0'
+    allureVersion: '2.29.0'
+- task: PublishAllureReport@2
+  inputs:
+    allureVersion: '2.29.0'
     testResultsDir: 'allure-results'
     reportName: 'STS - Playwright - Regression Report'
 
