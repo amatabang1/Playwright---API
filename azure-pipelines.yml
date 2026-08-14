@@ -72,7 +72,7 @@ steps:
 # Generate Allure Report
 - script: |
     echo Generating Allure Report...
-    allure generate allure-results --clean -o allure-report
+    npx allure generate allure-results --clean -o allure-report
   displayName: 'Generate Allure Report'
   condition: always()
 
@@ -134,12 +134,9 @@ steps:
   displayName: 'Publish Allure Report'
   condition: always()
   inputs:
-    allureVersion: '2.29.0'
-- task: PublishAllureReport@2
-  inputs:
-    allureVersion: '2.29.0'
     testResultsDir: 'allure-results'
     reportName: 'STS - Playwright - Regression Report'
+    allureVersion: '2.43.0'
 
 # Publish Test Results
 - task: PublishTestResults@2
