@@ -69,6 +69,25 @@ steps:
           Write-Host "test-results folder not found"
       }
 
+# Inspect Allure Results
+- task: PowerShell@2
+  displayName: 'Inspect Allure Results'
+  condition: always()
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "=== ALLURE RESULTS ==="
+
+      if (Test-Path "allure-results") {
+          Get-ChildItem "allure-results" -Recurse
+
+          $count = (Get-ChildItem "allure-results" -Recurse).Count
+          Write-Host "Total files found: $count"
+      }
+      else {
+          Write-Host "allure-results folder not found"
+      }
+
 # Generate Allure Report
 - script: |
     echo Generating Allure Report...
@@ -94,14 +113,12 @@ steps:
 
       if (Test-Path "allure-report\data") {
           Write-Host "FOUND: allure-report\data"
-          Get-ChildItem "allure-report\data"
       } else {
           Write-Host "MISSING: allure-report\data"
       }
 
       if (Test-Path "allure-report\widgets") {
           Write-Host "FOUND: allure-report\widgets"
-          Get-ChildItem "allure-report\widgets"
       } else {
           Write-Host "MISSING: allure-report\widgets"
       }
@@ -129,15 +146,6 @@ steps:
         }
       }
 
-# Publish Allure Report to Azure DevOps
-- task: PublishAllureReport@2
-  displayName: 'Publish Allure Report'
-  condition: always()
-  inputs:
-    testResultsDir: 'allure-results'
-    reportName: 'STS - Playwright - Regression Report'
-    allureVersion: '2.43.0'
-
 # Publish Test Results
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
@@ -159,13 +167,13 @@ steps:
     artifact: 'test-results'
     publishLocation: 'pipeline'
 
-# Publish Allure Report Artifact
+# Publish Allure HTML Report
 - task: PublishPipelineArtifact@1
-  displayName: 'Publish Allure Report Artifact'
+  displayName: 'Publish Allure HTML Report'
   condition: always()
   inputs:
     targetPath: 'allure-report'
-    artifact: 'allure-report'
+    artifact: 'STS-Playwright-Allure-Report'
     publishLocation: 'pipeline'
 
 # Publish Monocart Report Artifact
@@ -185,4 +193,3 @@ steps:
     targetPath: 'playwright-report'
     artifact: 'playwright-report'
     publishLocation: 'pipeline'
-    
