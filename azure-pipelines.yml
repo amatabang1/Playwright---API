@@ -7,14 +7,18 @@ pool:
     - Agent.Name -equals STS-SelfHosted-ARM83471
 
 variables:
-  NODE_VERSION: '20.x'
   TEST_TAG: '@Regression'
 
 steps:
 
-# Verify Node.js installation on the agent
+# Force Node 18 LTS
+- task: NodeTool@0
+  displayName: 'Use Node 18 LTS'
+  inputs:
+    versionSpec: '18.x'
+
+# Verify Node.js installation
 - script: |
-    echo Checking Node installation...
     node -v
     npm -v
   displayName: 'Check Node'
@@ -35,8 +39,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "Cleaning previous reports..."
-
       Remove-Item "allure-results" -Recurse -Force -ErrorAction SilentlyContinue
       Remove-Item "allure-report" -Recurse -Force -ErrorAction SilentlyContinue
       Remove-Item "playwright-report" -Recurse -Force -ErrorAction SilentlyContinue
@@ -46,105 +48,34 @@ steps:
       New-Item -ItemType Directory -Force -Path "allure-results" | Out-Null
       New-Item -ItemType Directory -Force -Path "test-results" | Out-Null
 
-      Write-Host "Cleanup complete"
-
-# Run Regression Suite
+# Run tests
 - script: |
     npx playwright test --grep "$(TEST_TAG)"
   displayName: 'Run Regression Tests'
   continueOnError: true
 
-# Verify test result files
+# Verify Allure Results
 - task: PowerShell@2
-  displayName: 'Verify Test Results'
+  displayName: 'Verify Allure Results'
   condition: always()
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "Checking test-results folder..."
-
-      if (Test-Path "test-results") {
-          Get-ChildItem "test-results" -Recurse
-      } else {
-          Write-Host "test-results folder not found"
-      }
-
-# Inspect Allure Results
-- task: PowerShell@2
-  displayName: 'Inspect Allure Results'
-  condition: always()
-  inputs:
-    targetType: 'inline'
-    script: |
-      Write-Host "=== ALLURE RESULTS ==="
-
       if (Test-Path "allure-results") {
-          Get-ChildItem "allure-results" -Recurse
-
-          $count = (Get-ChildItem "allure-results" -Recurse).Count
-          Write-Host "Total files found: $count"
+        Write-Host "Allure results found"
+        Get-ChildItem "allure-results" -Recurse
       }
       else {
-          Write-Host "allure-results folder not found"
+        Write-Host "allure-results folder not found"
       }
 
-# Generate Allure Report
-- script: |
-    echo Generating Allure Report...
-    npx allure generate allure-results --clean -o allure-report
-  displayName: 'Generate Allure Report'
-  condition: always()
-
-# Verify generated report contents
-- task: PowerShell@2
-  displayName: 'Verify Allure Report'
+# Publish Allure Report in Azure DevOps Tab
+- task: PublishAllureReport@2
+  displayName: 'Publish Allure Report'
   condition: always()
   inputs:
-    targetType: 'inline'
-    script: |
-      Write-Host "Verifying Allure Report Contents..."
-
-      if (Test-Path "allure-report") {
-          Write-Host "FOUND: allure-report"
-          Get-ChildItem "allure-report"
-      } else {
-          Write-Host "MISSING: allure-report"
-      }
-
-      if (Test-Path "allure-report\data") {
-          Write-Host "FOUND: allure-report\data"
-      } else {
-          Write-Host "MISSING: allure-report\data"
-      }
-
-      if (Test-Path "allure-report\widgets") {
-          Write-Host "FOUND: allure-report\widgets"
-      } else {
-          Write-Host "MISSING: allure-report\widgets"
-      }
-
-# Verify all report folders before publishing
-- task: PowerShell@2
-  displayName: 'Verify Report Folders'
-  condition: always()
-  inputs:
-    targetType: 'inline'
-    script: |
-      Write-Host "Checking generated report folders..."
-
-      "allure-results",
-      "allure-report",
-      "playwright-report",
-      "monocart-report",
-      "test-results" | ForEach-Object {
-
-        if (Test-Path $_) {
-          Write-Host "FOUND: $_"
-        }
-        else {
-          Write-Host "MISSING: $_"
-        }
-      }
+    testResultsDir: 'allure-results'
+    reportName: 'STS - Playwright - Regression Report'
 
 # Publish Test Results
 - task: PublishTestResults@2
@@ -157,47 +88,3 @@ steps:
     failTaskOnFailedTests: false
     publishRunAttachments: true
     testRunTitle: 'Playwright Regression Run'
-
-# Publish Allure Report to Azure DevOps
-- task: PublishAllureReport@2
-  displayName: 'Publish Allure Report'
-  condition: always()
-  inputs:
-    testResultsDir: 'allure-results'
-    reportName: 'STS - Playwright - Regression Report'
-
-# Publish Raw Test Results
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Test Results Artifact'
-  condition: always()
-  inputs:
-    targetPath: 'test-results'
-    artifact: 'test-results'
-    publishLocation: 'pipeline'
-
-# Publish Allure HTML Report
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Allure HTML Report'
-  condition: always()
-  inputs:
-    targetPath: 'allure-report'
-    artifact: 'allure-results'
-    publishLocation: 'pipeline'
-
-# Publish Monocart Report Artifact
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Monocart Report Artifact'
-  condition: always()
-  inputs:
-    targetPath: 'monocart-report'
-    artifact: 'monocart-report'
-    publishLocation: 'pipeline'
-
-# Publish Playwright HTML Report
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Playwright HTML Report'
-  condition: always()
-  inputs:
-    targetPath: 'playwright-report'
-    artifact: 'playwright-report'
-    publishLocation: 'pipeline'
