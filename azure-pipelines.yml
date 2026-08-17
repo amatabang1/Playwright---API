@@ -147,16 +147,16 @@ steps:
       }
 
 # Publish Test Results
-# - task: PublishTestResults@2
-#   displayName: 'Publish Test Results'
-#   condition: always()
-#   inputs:
-#     testResultsFormat: 'JUnit'
-#     testResultsFiles: 'test-results/results.xml'
-#     mergeTestResults: true
-#     failTaskOnFailedTests: false
-#     publishRunAttachments: true
-#     testRunTitle: 'Playwright Regression Run'
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  condition: always()
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'test-results/results.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: false
+    publishRunAttachments: true
+    testRunTitle: 'Playwright Regression Run'
 
 # Publish Raw Test Results
 # - task: PublishPipelineArtifact@1
