@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiEnv = env.TestBase;
+const testBed = env.TestData;
+const apiEnvi = env.TestBase;
 
-// Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('PTTCheckStatus');
+//Passed the worksheet related to the test to get the data set
+const testData: any[] = XLutil.getExcelData(testBed,'PTTCheckStatus');
 
 test.describe('Promote to Test - Check Status API Test Suite', { tag: ['@PTTest', '@Regression', '@CheckStatus'] }, () => {
   for (const data of testData) {

@@ -2,16 +2,20 @@ import * as XLSX from 'xlsx';
 import * as fs from 'fs';
 import { TestInfo } from '@playwright/test';
 
-const FILE_PATH = './testdata/EBAPI.xlsx';
-
-//get excel details
-export function getExcelData(sheetName: string) {
-    const workbook = XLSX.readFile(FILE_PATH);
+// Get Excel data based on file path and sheet name
+export function getExcelData(filePath: string, sheetName: string) {
+    const workbook = XLSX.readFile(filePath);
     const worksheet = workbook.Sheets[sheetName];
 
+    if (!worksheet) {
+        throw new Error(
+            `Sheet '${sheetName}' not found in workbook '${filePath}'`
+        );
+    }
     return XLSX.utils.sheet_to_json(worksheet);
 }
 
+// Write to excel for excel output
 export async function writeExcelResults(
     sheetName: string,
     data: any[],
@@ -72,6 +76,7 @@ export async function generateAndAttachExcelResults(
     );
 }
 
+// Use to limit the output value to be stored to a single cell in Excel. Limit is 32767
 export function truncateForExcel(value: any): string {
     const MAX_EXCEL_CELL_LENGTH = 32767;
     const suffix = '\n[TRUNCATED]';

@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiTest = env.TestBase;
+const testBed = env.TestData;
+const apiEnvi = env.TestBase;
 
 //Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('PTTBankList');
+const testData: any[] = XLutil.getExcelData(testBed,'PTTAuthAPI');
 
 test.describe('Promote To Test - Bank List API Test Suite', { tag: ['@PTTest', '@Regression', '@BankList'] }, () => {
   for (const data of testData) {
@@ -32,7 +33,7 @@ test.describe('Promote To Test - Bank List API Test Suite', { tag: ['@PTTest', '
 
       //Trigger the api call for GET
       const response = await request.get(
-        `${apiTest}${data.IN_EndPoint}`,
+        `${apiEnvi}${data.IN_EndPoint}`,
         {
           headers: reqHeaders,
           params,
@@ -48,7 +49,7 @@ test.describe('Promote To Test - Bank List API Test Suite', { tag: ['@PTTest', '
       }
 
       //Log API request and response
-      util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, params, null);
+      util.logRequest(apiEnvi, data.IN_EndPoint, reqHeaders, params, null);
       util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody);
 
       //Output values into data table

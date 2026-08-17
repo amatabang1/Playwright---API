@@ -5,5 +5,6 @@
   "TestBase": "https://proxy-apim-external-test.eastwestbanker.com/test",
   "LiveBase": "https://proxy-apim-external-test.eastwestbanker.com/",
   "Sandbox": "https://proxy-apim-external-test.eastwestbanker.com/sandbox",
-  "ipNotWhitelisted": "https://easyconnect-apiuat.eastwestbanker.com"
+  "IPNotWhitelisted": "https://easyconnect-apiuat.eastwestbanker.com",
+  "TestData": "./testdata/EBAPI.xlsx"
 }

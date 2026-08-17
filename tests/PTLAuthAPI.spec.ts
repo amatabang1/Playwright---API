@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
+const testBed = env.TestData;
 const apiEnvi = env.LiveBase;
 
 //Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('PTLAuthAPI');
+const testData: any[] = XLutil.getExcelData(testBed,'PTLAuthAPI');
 
 test.describe('Promote to Live - Auth API Test Suite', { tag: ['@PTLive', '@Regression', '@AuthAPI'] }, () => {
   for (const data of testData) {

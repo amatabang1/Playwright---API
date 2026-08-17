@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
+const testBed = env.TestData;
 const apiEnvi = env.TestBase;
 
 //Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('PTTAuthAPI');
+const testData: any[] = XLutil.getExcelData(testBed,'PTTAuthAPI');
 
 test.describe('Promote to Test - Auth API Test Suite', { tag: ['@PTTest', '@Regression', '@AuthAPI'] }, () => {
   for (const data of testData) {

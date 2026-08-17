@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
+const testBed = env.TestData;
 const apiEnvi = env.Sandbox;
 
 //Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('SBAuthAPI');
+const testData: any[] = XLutil.getExcelData(testBed,'SBAuthAPI');
 
 test.describe('Sandbox - Auth API Test Suite', { tag: ['@Sandbox', '@Regression', '@AuthAPI'] }, () => {
   for (const data of testData) {

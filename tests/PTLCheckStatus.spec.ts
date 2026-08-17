@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
+const testBed = env.TestData;
 const apiEnvi = env.LiveBase;
 
-// Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('PTLCheckStatus');
+//Passed the worksheet related to the test to get the data set
+const testData: any[] = XLutil.getExcelData(testBed,'PTLCheckStatus');
 
 test.describe('Promote to Live - Check Status API Test Suite', { tag: ['@PTLive', '@Regression', '@CheckStatus'] }, () => {
   for (const data of testData) {

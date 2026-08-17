@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
+const testBed = env.TestData;
 const apiEnvi = env.LiveBase;
 
-// Get test data for specified sheet
-const testData: any[] = XLutil.getExcelData('PTLSendFunds');
+//Passed the worksheet related to the test to get the data set
+const testData: any[] = XLutil.getExcelData(testBed,'PTLSendFunds');
 
 let bearerToken: string;
 let tokenToUse: string;

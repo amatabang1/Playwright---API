@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiEnv = env.Sandbox;
+const testBed = env.TestData;
+const apiEnvi = env.Sandbox;
 
-// Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('SBCheckStatus');
+//Passed the worksheet related to the test to get the data set
+const testData: any[] = XLutil.getExcelData(testBed,'SBCheckStatus');
 
 test.describe('Sandbox - Check Status API Test Suite', { tag: ['@Sandbox', '@Regression', '@CheckStatus'] }, () => {
   for (const data of testData) {

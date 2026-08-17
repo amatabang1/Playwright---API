@@ -3,10 +3,11 @@ import env from '../config/envi.constants.json';
 import * as XLutil from '../utils/excelUtil';
 import * as util from '../utils/common';
 
-const apiTest = env.LiveBase;
+const testBed = env.TestData;
+const apiEnvi = env.LiveBase;
 
 //Passed the worksheet related to the test to get the data set
-const testData: any[] = XLutil.getExcelData('PTLBankList');
+const testData: any[] = XLutil.getExcelData(testBed,'PTLBankList');
 
 test.describe('Promote To Live - Bank List API Test Suite', { tag: ['@PTLive', '@Regression', '@BankList'] }, () => {
   for (const data of testData) {
@@ -32,7 +33,7 @@ test.describe('Promote To Live - Bank List API Test Suite', { tag: ['@PTLive', '
 
       //Trigger the api call for GET
       const response = await request.get(
-        `${apiTest}${data.IN_EndPoint}`,
+        `${apiEnvi}${data.IN_EndPoint}`,
         {
           headers: reqHeaders,
           params,
@@ -48,7 +49,7 @@ test.describe('Promote To Live - Bank List API Test Suite', { tag: ['@PTLive', '
       }
 
       //Log API request and response
-      util.logRequest(apiTest, data.IN_EndPoint, reqHeaders, params, null);
+      util.logRequest(apiEnvi, data.IN_EndPoint, reqHeaders, params, null);
       util.logResponse(data.ExpectedStatus, response.status(), response.headers(), responseBody);
 
       //Output values into data table
