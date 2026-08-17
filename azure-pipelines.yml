@@ -158,24 +158,6 @@ steps:
     publishRunAttachments: true
     testRunTitle: 'Playwright Regression Run'
 
-# Publish Raw Test Results
-# - task: PublishPipelineArtifact@1
-#   displayName: 'Publish Test Results Artifact'
-#   condition: always()
-#   inputs:
-#     targetPath: 'test-results'
-#     artifact: 'test-results'
-#     publishLocation: 'pipeline'
-
-# Publish Allure HTML Report
-# - task: PublishPipelineArtifact@1
-#   displayName: 'Publish Allure HTML Report'
-#   condition: always()
-#   inputs:
-#     targetPath: 'allure-report'
-#     artifact: 'allure-results'
-#     publishLocation: 'pipeline'
-
 # Publish Monocart Report Artifact
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Monocart Report Artifact'
@@ -192,4 +174,22 @@ steps:
 #   inputs:
 #     targetPath: 'playwright-report'
 #     artifact: 'playwright-report'
+#     publishLocation: 'pipeline'
+
+# Publish Raw Test Results
+# - task: PublishPipelineArtifact@1
+#   displayName: 'Publish Test Results Artifact'
+#   condition: always()
+#   inputs:
+#     targetPath: 'test-results'
+#     artifact: 'test-results'
+#     publishLocation: 'pipeline'
+
+# Publish Allure HTML Report
+# - task: PublishPipelineArtifact@1
+#   displayName: 'Publish Allure HTML Report'
+#   condition: always()
+#   inputs:
+#     targetPath: 'allure-report'
+#     artifact: 'allure-results'
 #     publishLocation: 'pipeline'
